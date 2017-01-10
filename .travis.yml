@@ -9,7 +9,7 @@ addons:
     - python3-dev
     - portaudio19-dev
 install:
-  - pip install -U tox==2.3.0 coveralls==1.1 nltk==3.1 gTTS==1.1.4
+  - pip install -U tox==2.3.0 coveralls==1.1
 
 script:
   - coverage erase
