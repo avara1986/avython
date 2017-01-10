@@ -10,8 +10,8 @@ Information
 .. image:: https://travis-ci.org/avara1986/avython.svg
     :target: https://travis-ci.org/avara1986/avython
 
-.. image:: https://coveralls.io/repos/avara1986/avython/badge.png
-  :target: https://coveralls.io/r/avara1986/avython
+.. image:: https://coveralls.io/repos/github/avara1986/avython/badge.svg?branch=master
+  :target: https://coveralls.io/github/avara1986/avython?branch=master
 
 .. image:: https://readthedocs.org/projects/avython/badge/?version=latest
   :target: http://avython.readthedocs.io/en/latest/?badge=latest
