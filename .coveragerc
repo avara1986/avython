@@ -1,0 +1,5 @@
+[run]
+include=*avython/*
+omit =
+    *example/*
+    .tox/*

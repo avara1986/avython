@@ -1,0 +1,23 @@
+language: python
+sudo: false
+cache: false
+python:
+    - '3.3'
+addons:
+  apt:
+    packages:
+    - python3-dev
+    - portaudio19-dev
+install:
+  - pip install -U tox==2.3.0 coveralls==1.1 nltk==3.1 gTTS==1.1.4
+
+script:
+  - coverage erase
+  - tox
+after_success:
+  - coverage combine
+  - coveralls
+
+notifications:
+  email:
+    - a.vara.1986@gmail.com
