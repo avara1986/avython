@@ -9,6 +9,7 @@ from avython.download import Download
 
 
 class DownloadTest(unittest.TestCase):
+
     def setUp(self):
         self.base_dir = os.path.dirname(__file__)
         self.host_dir = os.path.join(self.base_dir, "runtests")
@@ -87,11 +88,11 @@ class DownloadTest(unittest.TestCase):
         return os.path.isdir(dir)
 
     def remove_file(self, file):
-            process = subprocess.Popen(
-                "rm -r {} ".format(file),
-                shell=True
-            )
-            process.wait()
+        process = subprocess.Popen(
+            "rm -r {} ".format(file),
+            shell=True
+        )
+        process.wait()
 
 
 if __name__ == '__main__':

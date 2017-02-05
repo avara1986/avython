@@ -5,6 +5,7 @@ from __future__ import absolute_import
 import subprocess
 import argparse
 import logging
+import sys
 
 logging.basicConfig(filename='log.log', level=logging.DEBUG)
 log = logging.getLogger('avython')
@@ -14,10 +15,7 @@ class GitAutotag(object):
     __revision_list = ["mayor", "minor", "patch"]  # other conf: ["pro", "pre", "dev"]
     __list_tags = False
 
-    def init(self):
-        pass
-
-    def parse_commandline(self):
+    def __init__(self, args):
         parser = argparse.ArgumentParser(description='Autotag a git project ')
         parser.add_argument("-v", "--version", help="Version pattern to search")
         parser.add_argument("-d", "--directory", help="Set the directory to search changes")
@@ -27,19 +25,22 @@ class GitAutotag(object):
 
         parser.add_argument("-p", "--push", action='store_true', help="Push the new tag to git")
 
-        args = parser.parse_args()
+        self.args = parser.parse_args(args)
+        self.parse_commandline()
 
-        self.version = args.version if args.version else "v"
+    def parse_commandline(self):
+
+        self.version = self.args.version if self.args.version else "v"
 
         self.version_pattern = self.version + "*"
 
-        self.directory = args.directory if args.directory else "./"
+        self.directory = self.args.directory if self.args.directory else "./"
 
-        self.revision = args.revision if args.revision else self.__revision_list[2]
+        self.revision = self.args.revision if self.args.revision else self.__revision_list[2]
 
-        self.force = args.force
+        self.force = self.args.force
 
-        self.__push = args.push
+        self.__push = self.args.push
 
     def run(self, *args):
         log.debug("Run: git {}".format(str(args)))
@@ -73,7 +74,7 @@ class GitAutotag(object):
     def parse_version_to_list(self):
         if self.last_tag():
             return self.last_tag().replace(self.version, "").split(".")
-        return False
+        return []
 
     def create_first_version(self):
         return ["0" for _ in range(len(self.__revision_list))]
@@ -85,14 +86,18 @@ class GitAutotag(object):
         if self.exist_changes() or self.force is True:
             version = self.parse_version_to_list()
             index_of_revision = self.__revision_list.index(self.revision)
-            element_to_increase = int(version[index_of_revision])
-            element_to_increase += 1
-            version[index_of_revision] = str(element_to_increase)
-            if index_of_revision < len(version) - 1:
-                for indx, val in enumerate(version):
-                    if index_of_revision < indx:
-                        version[indx] = "0"
-            return self.parse_version_to_str(version)
+            try:
+                element_to_increase = int(version[index_of_revision])
+            except IndexError:
+                pass
+            else:
+                element_to_increase += 1
+                version[index_of_revision] = str(element_to_increase)
+                if index_of_revision < len(version) - 1:
+                    for indx, val in enumerate(version):
+                        if index_of_revision < indx:
+                            version[indx] = "0"
+                return self.parse_version_to_str(version)
         return False
 
     def increase_or_create(self):
@@ -111,6 +116,5 @@ class GitAutotag(object):
 
 
 if __name__ == '__main__':
-    git = GitAutotag()
-    git.parse_commandline()
+    git = GitAutotag(sys.argv[1:])
     print(git.increase_or_create())
