@@ -14,7 +14,9 @@ AVython is a list
    :caption: Console
 
 
+   avython.console
    avython.download
+   avython.gitautotag
 
 Indices and tables
 ==================
