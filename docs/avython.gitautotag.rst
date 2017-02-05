@@ -1,4 +1,4 @@
-avython.download package
+avython.gitautotag package
 ========================
 
 Submodules

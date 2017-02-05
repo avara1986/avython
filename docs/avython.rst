@@ -8,6 +8,7 @@ Subpackages
 
     avython.console
     avython.download
+    avython.gitautotag
 
 Module contents
 ---------------
