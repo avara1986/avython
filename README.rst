@@ -7,6 +7,9 @@ AVython
 Information
 ===========
 
+.. image:: https://badge.fury.io/py/avython.svg
+    :target: https://badge.fury.io/py/avython
+
 .. image:: https://travis-ci.org/avara1986/avython.svg
     :target: https://travis-ci.org/avara1986/avython
 
