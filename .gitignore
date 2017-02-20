@@ -9,7 +9,7 @@ static/*
 !/.gitmodules
 !/.travis.yml
 .directory
-
+src
 # C extensions
 *.so
 
