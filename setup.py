@@ -79,6 +79,11 @@ setup(
     url='https://github.com/avara1986/avython.git',
     test_suite='nose.collector',
     packages=find_packages(),
+    scripts=['avython/gitautotag/gitautotag.py'],
+    install_requires=[
+        'awscli',
+        'pathlib'
+    ],
     include_package_data=True,
     zip_safe=False,
     cmdclass={'install': post_install},
