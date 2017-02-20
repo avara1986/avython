@@ -57,7 +57,7 @@ class post_install(install):
 
 setup(
     name="avython",
-    version="0.0.1",
+    version="0.0.3",
     author="Alberto Vara",
     author_email="a.vara.1986@gmail.com",
     description="Common resources to extend python code",
