@@ -51,7 +51,7 @@ class GitAutotag(object):
 
     def parse_result(self, result):
         if result and len(result) > 1:
-            return result.split('\n')[:-1]
+            return result.decode('utf-8').split('\n')[:-1]
         return []
 
     def run_parse(self, *args):
