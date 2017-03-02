@@ -59,7 +59,7 @@ class GitAutotag(object):
 
     def list_tags(self, cached=True):
         if not self.__list_tags or cached is False:
-            self.__list_tags = self.run_parse('for-each-ref', 'refs/tags/' + self.version_pattern,  '--sort=taggerdate', "--format='%(tag)'")
+            self.__list_tags = self.run_parse('for-each-ref', 'refs/tags/' + self.version_pattern,  '--sort=taggerdate', "--format=%(tag)")
             #self.__list_tags = self.run_parse('tag', '-l', self.version_pattern, '--sort=creatordate')
         return self.__list_tags
 
