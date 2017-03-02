@@ -59,7 +59,8 @@ class GitAutotag(object):
 
     def list_tags(self, cached=True):
         if not self.__list_tags or cached is False:
-            self.__list_tags = self.run_parse('tag', '-l', self.version_pattern, '--sort=creatordate')
+            self.__list_tags = self.run_parse('for-each-ref', 'refs/tags/' + self.version_pattern,  '--sort=taggerdate', "--format='%(tag)'")
+            #self.__list_tags = self.run_parse('tag', '-l', self.version_pattern, '--sort=creatordate')
         return self.__list_tags
 
     def last_tag(self):
@@ -67,7 +68,7 @@ class GitAutotag(object):
 
     def exist_changes(self):
         if self.last_tag():
-            return self.run_parse('log', '{}..HEAD'.format(self.last_tag()), '--oneline', self.directory)
+            return self.run_parse('log', '--oneline', '{}..HEAD'.format(self.last_tag()), '--', self.directory)
         log.debug("GitAutotag.exist_changes: Not exist tags")
 
     def parse_version_to_list(self):
