@@ -11,5 +11,5 @@ from avython.gitautotag import GitAutotag
 class GitAutotagTest(unittest.TestCase):
 
     def test_init(self):
-        git = GitAutotag(['-v fake', '-f'])
+        git = GitAutotag(arguments=['-v fake', '-f'])
         self.assertTrue(git.increase_or_create(), "fake0.0.0")
