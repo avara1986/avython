@@ -30,6 +30,7 @@ class GitAutotag(object):
 
         self.args = parser.parse_args(arguments)
         self.parse_commandline()
+        print(self.increase_or_create())
 
     def parse_commandline(self):
 
@@ -121,4 +122,3 @@ class GitAutotag(object):
 
 if __name__ == '__main__':
     git = GitAutotag(sys.argv[1:])
-    print(git.increase_or_create())
