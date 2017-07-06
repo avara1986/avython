@@ -14,7 +14,11 @@ class GitAutotag(object):
     __revision_list = ["mayor", "minor", "patch"]  # other conf: ["pro", "pre", "dev"]
     __list_tags = False
 
-    def __init__(self, args):
+    def __init__(self, *args, **kwargs):
+        arguments = kwargs.get("arguments", False)
+        if not arguments:
+            arguments = sys.argv[1:]
+
         parser = argparse.ArgumentParser(description='Autotag a git project ')
         parser.add_argument("-v", "--version", help="Version pattern to search")
         parser.add_argument("-d", "--directory", help="Set the directory to search changes")
@@ -24,7 +28,7 @@ class GitAutotag(object):
 
         parser.add_argument("-p", "--push", action='store_true', help="Push the new tag to git")
 
-        self.args = parser.parse_args(args)
+        self.args = parser.parse_args(arguments)
         self.parse_commandline()
 
     def parse_commandline(self):
