@@ -22,9 +22,6 @@ Information
 .. image:: https://requires.io/github/avara1986/avython/requirements.svg?branch=master
   :target: https://requires.io/github/avara1986/avython/requirements/?branch=master
 
-.. image:: http://img.shields.io/:license-mit-blue.svg
-  :target: http://doge.mit-license.org
- 
 
 Resources to extend Python utils
 

@@ -12,20 +12,19 @@ static/*
 src
 # C extensions
 *.so
-
+.idea
+.pypirc
+/build/
 # Distribution / packaging
 .Python
 env/
-build/
 develop-eggs/
 dist/
 eggs/
 lib/
 lib64/
 parts/
-sitepackages/
 sdist/
-var/
 *.egg-info/
 .installed.cfg
 *.egg
@@ -51,7 +50,3 @@ coverage.xml
 
 # Sphinx documentation
 docs/_build/
-# Eclipse
-.project
-.pydevproject
-.settings/
